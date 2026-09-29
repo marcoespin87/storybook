@@ -1,0 +1,155 @@
+/* =========================================================
+   Cortex Empresas · Login — tokens y componentes
+   Fuente de verdad: Figma "Cortex Empresas - Login Mockup"
+   Las clases marcadas DIVERGENTE no existen en Figma a propósito.
+   ========================================================= */
+:root {
+  --c-primary: #1565c0;
+  --c-blue-700: #0b3d91;
+  --c-navy: #071633;
+  --c-title: #0d47a1;
+  --c-accent: #4fc3f7;
+  --c-text: #212938;
+  --c-muted: #8c94a1;
+  --c-border: #ccd4de;
+  --c-disabled-bg: #e8edf4;
+  --c-error: #c62828;
+  --c-white: #ffffff;
+  --g-panel: linear-gradient(135deg, #1565c0 0%, #0b3d91 55%, #071633 100%);
+  --g-logo: linear-gradient(135deg, #4fc3f7 0%, #0b3d91 100%);
+  --font-sans: 'Inter', sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --focus-ring: 3px solid rgba(79, 195, 247, 0.5);
+}
+
+/* ---------- Logo ---------- */
+.cx-logo { display: inline-flex; align-items: center; gap: 12px; }
+.cx-logo__mark { width: 44px; height: 44px; flex: 0 0 44px; display: block; }
+.cx-logo__words { display: flex; flex-direction: column; }
+.cx-logo__name { font: 700 30px/1.1 var(--font-sans); letter-spacing: -0.02em; color: var(--c-title); }
+.cx-logo__sub { font: 600 10px/1.2 var(--font-sans); letter-spacing: 0.24em; color: var(--c-primary); }
+.cx-logo--inverse .cx-logo__name,
+.cx-logo--inverse .cx-logo__sub { color: var(--c-white); } /* EXTENSIÓN */
+
+/* ---------- Button ---------- */
+.cx-btn {
+  width: 430px; max-width: 100%; height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border: none; border-radius: var(--radius-sm);
+  font: 600 15px var(--font-sans);
+  background: var(--c-primary); color: var(--c-white);
+  cursor: pointer; transition: background 0.15s;
+}
+.cx-btn:hover:not(:disabled), .cx-btn.is-hover { background: var(--c-title); }
+.cx-btn:active:not(:disabled), .cx-btn.is-active { background: var(--c-blue-700); }
+.cx-btn:focus-visible, .cx-btn.is-focus { outline: var(--focus-ring); outline-offset: 2px; }
+.cx-btn:disabled { background: var(--c-disabled-bg); color: rgba(140, 148, 161, 0.8); cursor: not-allowed; }
+.cx-btn--auto { width: auto; padding: 0 24px; }   /* DIVERGENTE: Figma usa 430px fijos */
+.cx-btn--pill { border-radius: 24px; }            /* DIVERGENTE: Figma usa 8px */
+.cx-btn--compact { height: 40px; font-size: 14px; } /* DIVERGENTE: Figma usa 48px / 15px */
+
+/* ---------- Link ---------- */
+.cx-link { font: 500 14px var(--font-sans); color: var(--c-primary); text-decoration: underline; }
+.cx-link:hover { color: var(--c-title); }
+.cx-link:focus-visible { outline: var(--focus-ring); outline-offset: 2px; border-radius: 2px; }
+
+/* ---------- TextField ---------- */
+.cx-field { --field-error: var(--c-error); display: flex; flex-direction: column; width: 430px; max-width: 100%; }
+.cx-field__label { font: 600 15px var(--font-sans); color: var(--c-text); margin-bottom: 8px; }
+.cx-input {
+  display: flex; align-items: center; gap: 8px;
+  height: 48px; box-sizing: border-box; padding: 0 14px 0 16px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border); border-radius: var(--radius-sm);
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+.cx-input:hover { border-color: var(--c-muted); }
+.cx-input:focus-within, .cx-input.is-focus {
+  border: 1.5px solid var(--c-primary);
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+}
+.cx-input__control {
+  flex: 1; min-width: 0; padding: 0; border: none; outline: none; background: transparent;
+  font: 400 15px var(--font-sans); color: var(--c-text);
+}
+.cx-input__control::placeholder { color: var(--c-muted); }
+.cx-field--error .cx-input { border: 1.5px solid var(--field-error); }
+.cx-input__error-icon {
+  width: 22px; height: 22px; flex: 0 0 22px; box-sizing: border-box;
+  border-radius: 50%; border: 1.5px solid var(--field-error); color: var(--field-error);
+  font: 700 13px var(--font-sans); display: grid; place-items: center;
+}
+.cx-field__helper { margin-top: 8px; font: 500 12px var(--font-sans); color: var(--field-error); }
+.cx-field--disabled .cx-input { background: var(--c-disabled-bg); border-color: var(--c-border); }
+.cx-field--disabled .cx-input__control { cursor: not-allowed; color: var(--c-muted); }
+.cx-field--square .cx-input { border-radius: 4px; }     /* DIVERGENTE: Figma usa 8px */
+.cx-field--alt-error { --field-error: #d32f2f; }        /* DIVERGENTE: Figma usa #C62828 */
+
+/* ---------- RegisterCard ---------- */
+.cx-register {
+  appearance: none; font: inherit; text-align: left;
+  width: 430px; max-width: 100%; height: 80px; box-sizing: border-box; padding: 0 20px;
+  display: flex; align-items: center; gap: 16px;
+  background: var(--c-white); border: 1px solid var(--c-border); border-radius: var(--radius-sm);
+  cursor: pointer; transition: border-color 0.15s, box-shadow 0.15s;
+}
+.cx-register:hover, .cx-register.is-hover { border-color: var(--c-primary); box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08); }
+.cx-register:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.cx-register__icon { width: 28px; height: 28px; flex: 0 0 28px; color: var(--c-primary); }
+.cx-register__texts { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.cx-register__title { font: 600 14px var(--font-sans); color: var(--c-text); }
+.cx-register__sub { font: 400 13px var(--font-sans); color: var(--c-muted); }
+.cx-register__chevron { width: 9px; height: 16px; flex: 0 0 9px; color: var(--c-text); }
+.cx-register--compact { height: 64px; padding: 0 16px; } /* DIVERGENTE: Figma usa 80px / 20px */
+
+/* ---------- LoginPage ---------- */
+.cx-login { display: grid; grid-template-columns: 830px 610px; width: 1440px; height: 900px; overflow: hidden; font-family: var(--font-sans); }
+.cx-login__left { position: relative; overflow: hidden; background: var(--g-panel); }
+.cx-login__net { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cx-cards { position: absolute; left: 130px; top: 215px; display: flex; flex-direction: column; gap: 20px; }
+.cx-card {
+  width: 652px; box-sizing: border-box; padding: 20px;
+  display: flex; flex-direction: column; gap: 16px;
+  background: rgba(7, 22, 51, 0.55); border: 1px solid rgba(79, 195, 247, 0.15); border-radius: var(--radius-md);
+}
+.cx-card__title { margin: 0; font: 600 14px var(--font-sans); color: var(--c-accent); }
+.cx-card__text { margin: 0; font: 400 14px/21px var(--font-sans); color: var(--c-white); }
+.cx-card__text a { color: var(--c-white); font-weight: 600; text-decoration: underline; }
+.cx-row { display: flex; align-items: center; gap: 16px; }
+.cx-row__icon { width: 36px; height: 36px; flex: 0 0 36px; border-radius: 50%; background: rgba(255, 255, 255, 0.08); display: grid; place-items: center; color: var(--c-accent); }
+.cx-row__icon svg { width: 18px; height: 18px; }
+.cx-row__text { width: 560px; margin: 0; font: 400 14px/21px var(--font-sans); color: var(--c-white); }
+.cx-login__copyright { position: absolute; left: 0; right: 0; bottom: 34px; margin: 0; text-align: center; font: 400 13px var(--font-sans); color: rgba(255, 255, 255, 0.8); }
+
+.cx-login__right { position: relative; background: var(--c-white); }
+.cx-topbar__back, .cx-topbar__lang { position: absolute; background: none; border: none; padding: 0; cursor: pointer; color: var(--c-title); }
+.cx-topbar__back { top: 16px; left: 36px; width: 24px; height: 24px; }
+.cx-topbar__lang { top: 22px; right: 36px; display: inline-flex; align-items: center; gap: 8px; font: 600 15px var(--font-sans); }
+.cx-topbar__back:focus-visible, .cx-topbar__lang:focus-visible { outline: var(--focus-ring); outline-offset: 2px; }
+.cx-form { position: absolute; left: 90px; top: 175px; width: 430px; display: flex; flex-direction: column; }
+.cx-form .cx-logo { margin-bottom: 36px; }
+.cx-form__title { margin: 0 0 32px; font: 600 19px var(--font-sans); color: var(--c-title); }
+.cx-form .cx-btn { margin-top: 24px; }
+.cx-form .cx-link { margin-top: 42px; align-self: center; }
+.cx-form .cx-register { margin-top: 20px; }
+.cx-login__help { position: absolute; left: 0; right: 0; bottom: 24px; margin: 0; text-align: center; font: 400 13px var(--font-sans); color: var(--c-text); }
+.cx-login__help strong { font-weight: 600; color: var(--c-title); }
+
+/* DIVERGENTE: Figma no define versión móvil */
+.cx-login--mobile { grid-template-columns: 1fr; width: 390px; height: 844px; }
+.cx-login--mobile .cx-login__left { display: none; }
+.cx-login--mobile .cx-form { left: 24px; right: 24px; width: auto; top: 96px; }
+.cx-login--mobile .cx-field, .cx-login--mobile .cx-btn, .cx-login--mobile .cx-register { width: 100%; }
+.cx-login--mobile .cx-topbar__back { left: 20px; }
+.cx-login--mobile .cx-topbar__lang { right: 20px; }
+.cx-login--mobile .cx-login__help { padding: 0 24px; }
+
+/* DIVERGENTE: Figma siempre muestra el panel informativo */
+.cx-login--no-info { grid-template-columns: 1fr; }
+.cx-login--no-info .cx-login__left { display: none; }
+.cx-login--no-info .cx-form { left: 50%; transform: translateX(-50%); }
+
+@media (prefers-reduced-motion: reduce) {
+  .cx-btn, .cx-input, .cx-register { transition: none; }
+}

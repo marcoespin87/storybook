@@ -1,0 +1,109 @@
+import { Meta, Canvas } from '@storybook/addon-docs/blocks';
+import * as ButtonStories from './Button.stories';
+import * as TextFieldStories from './TextField.stories';
+import * as RegisterCardStories from './RegisterCard.stories';
+import * as LogoStories from './Logo.stories';
+import * as LoginPageStories from './LoginPage.stories';
+
+<Meta title="Cortex/Login/Concordancia con Figma" />
+
+# Concordancia con Figma
+
+Cada historia del Storybook está clasificada según qué tan fiel es al archivo Figma **Cortex Empresas - Login Mockup** (tableros *Login* y *Redlines (medidas)*).
+
+| Marca | Categoría | Qué significa |
+|---|---|---|
+| ✅ | **Concordante** | Se ve y mide igual que en Figma. Es la referencia oficial. |
+| 🟡 | **Extensión** | No existe en Figma, pero usa los mismos tokens y medidas. Completa estados que el diseño no dibujó (hover, focus, habilitado…). Debe validarse con diseño antes de producción. |
+| ❌ | **Divergente** | Contradice un valor definido en Figma. Está aquí a propósito para mostrar cómo se ve una desviación y por qué no debe usarse. |
+
+La marca aparece al inicio del nombre de cada historia en el menú lateral, y cada historia lleva el tag `concordante`, `extension` o `divergente` para filtrarla.
+
+---
+
+## Matriz de concordancia
+
+| Componente | Variante | Estado | Figma | Storybook | Diferencia |
+|---|---|---|---|---|---|
+| Button | Deshabilitado | ✅ | 430×48 · radio 8 · #E8EDF4 | Igual | — |
+| Button | Habilitado / Hover / Active / Focus | 🟡 | No definido | #1565C0 / #0D47A1 / #0B3D91 / outline 3px | Estados nuevos |
+| Button | Pill | ❌ | radio **8px** | radio **24px** | Forma |
+| Button | Compacto | ❌ | alto **48px**, texto 15px | alto **40px**, texto 14px | Tamaño |
+| Button | Ancho automático | ❌ | ancho **430px** fijo | ancho según texto | Ancho |
+| TextField | Error | ✅ | borde 1.5px #C62828 + icono "!" | Igual | — |
+| TextField | Default / Focus / Con valor / Deshabilitado | 🟡 | No definido | borde #CCD4DE / #1565C0 + halo | Estados nuevos |
+| TextField | Error sin icono | ❌ | icono 22×22 visible | sin icono | Accesibilidad: el error solo se comunica por color |
+| TextField | Error con otro rojo | ❌ | **#C62828** | **#D32F2F** | Color fuera de token |
+| TextField | Esquinas 4px | ❌ | radio **8px** | radio **4px** | Forma |
+| RegisterCard | Default | ✅ | 430×80 · padding 20 · gap 16 | Igual | — |
+| RegisterCard | Hover | 🟡 | No definido | borde #1565C0 + sombra | Estado nuevo |
+| RegisterCard | Sin icono | ❌ | icono usuario 28×28 | sin icono | Contenido |
+| RegisterCard | Compacta | ❌ | alto **80px**, padding 20 | alto **64px**, padding 16 | Tamaño |
+| Logo | Default | ✅ | isotipo 44×44 + "Cortex" + "EMPRESAS" | Igual | — |
+| Logo | Inverso | 🟡 | No definido | texto blanco | Variante nueva |
+| Logo | Sin "EMPRESAS" | ❌ | con subtítulo | sin subtítulo | Contenido |
+| LoginPage | Desktop | ✅ | 1440×900, error + botón deshabilitado | Igual | — |
+| LoginPage | Desktop con usuario | 🟡 | No definido | sin error, botón habilitado | Flujo nuevo |
+| LoginPage | Mobile | ❌ | solo desktop | 390×844, sin panel izquierdo | Layout no diseñado |
+| LoginPage | Sin panel informativo | ❌ | panel azul siempre visible | formulario centrado a pantalla completa | Layout |
+
+---
+
+## Button
+
+La referencia de Figma es el botón **deshabilitado**.
+
+<Canvas of={ButtonStories.Disabled} />
+
+**Divergente: Pill.** Solo cambia el radio (8px → 24px), pero rompe la consistencia con el input y la card, que también usan 8px.
+
+<Canvas of={ButtonStories.Pill} />
+
+**Divergente: Compacto.** Baja a 40px y deja de alinearse con el input de 48px que está justo encima.
+
+<Canvas of={ButtonStories.Compact} />
+
+## TextField
+
+<Canvas of={TextFieldStories.ErrorState} />
+
+**Divergente: Error sin icono.** Figma incluye el icono "!" para que el error no dependa solo del color. Quitarlo afecta a personas con daltonismo.
+
+<Canvas of={TextFieldStories.ErrorWithoutIcon} />
+
+**Divergente: Error con otro rojo.** A simple vista casi no se nota (#C62828 vs #D32F2F), por eso es el caso más fácil de pasar por alto en una revisión. Toda la validación debe usar `var(--c-error)`.
+
+<Canvas of={TextFieldStories.ErrorAltColor} />
+
+## RegisterCard
+
+<Canvas of={RegisterCardStories.Default} />
+
+**Divergente: Compacta.** 64px de alto en lugar de 80px, y el padding interno baja de 20 a 16.
+
+<Canvas of={RegisterCardStories.Compact} />
+
+## Logo
+
+<Canvas of={LogoStories.Default} />
+
+**Divergente: Sin "EMPRESAS".** El subtítulo forma parte de la marca en Figma.
+
+<Canvas of={LogoStories.WithoutSubtitle} />
+
+## LoginPage
+
+La pantalla completa concordante se revisa en *Cortex/Pantallas/LoginPage → ✅ Desktop (Figma)*.
+
+**Divergente: Mobile.** Figma no tiene diseño móvil. Esta versión es una propuesta técnica: se oculta el panel izquierdo y el formulario ocupa el ancho con márgenes de 24px. Antes de implementarla hace falta que diseño cree el frame móvil en Figma.
+
+<Canvas of={LoginPageStories.Mobile} />
+
+---
+
+## Cómo revisar una historia contra Figma
+
+1. Abre la pestaña **Design** del panel de addons (`@storybook/addon-designs`); cada historia está enlazada al frame de Figma.
+2. Compara con el tablero **Redlines (medidas)** para distancias y tamaños.
+3. Usa la pestaña **Accessibility** (`@storybook/addon-a11y`) para detectar problemas como el del error sin icono.
+4. Si una historia 🟡 se aprueba, diseño debe agregarla a Figma y la historia pasa a ✅.

@@ -1,0 +1,355 @@
+import { Meta, ColorPalette, ColorItem, Typeset } from '@storybook/addon-docs/blocks';
+
+<Meta title="Cortex/Login/Especificaciones" />
+
+# Cortex Empresas · Login — Especificaciones de diseño
+
+- **Viewport de referencia:** 1440 × 900 px
+- **Fuente:** Inter (`font-family: "Inter", sans-serif`)
+- **Unidades:** px · Colores en HEX / RGBA
+- Los estados marcados como **(propuesto)** no aparecen en el mockup; son sugerencias para completar el componente.
+- **Fuente de verdad visual:** archivo Figma *Cortex Empresas - Login Mockup* (tableros *Login* y *Redlines*).
+
+---
+
+## 1. Colores (design tokens)
+
+<ColorPalette>
+  <ColorItem title="Primary" subtitle="--c-primary · links, iconos, botón activo" colors={{ primary: '#1565C0' }} />
+  <ColorItem title="Blue 700" subtitle="--c-blue-700 · degradado panel" colors={{ 'blue-700': '#0B3D91' }} />
+  <ColorItem title="Navy" subtitle="--c-navy · degradado / fondo tarjetas" colors={{ navy: '#071633' }} />
+  <ColorItem title="Title" subtitle="--c-title · títulos, logo, teléfono" colors={{ title: '#0D47A1' }} />
+  <ColorItem title="Accent" subtitle="--c-accent · títulos tarjetas, iconos panel" colors={{ accent: '#4FC3F7' }} />
+  <ColorItem title="Text" subtitle="--c-text · texto principal, labels" colors={{ text: '#212938' }} />
+  <ColorItem title="Muted" subtitle="--c-muted · placeholder, deshabilitado" colors={{ muted: '#8C94A1' }} />
+  <ColorItem title="Border" subtitle="--c-border · bordes cards / inputs" colors={{ border: '#CCD4DE' }} />
+  <ColorItem title="Disabled BG" subtitle="--c-disabled-bg · botón deshabilitado" colors={{ 'disabled-bg': '#E8EDF4' }} />
+  <ColorItem title="Error" subtitle="--c-error · validación" colors={{ error: '#C62828' }} />
+  <ColorItem title="White" subtitle="--c-white · fondo panel derecho" colors={{ white: '#FFFFFF' }} />
+</ColorPalette>
+
+**Degradados**
+
+| Token | Valor |
+|---|---|
+| `--g-panel` | `linear-gradient(135deg, #1565C0 0%, #0B3D91 55%, #071633 100%)` |
+| `--g-logo` | `linear-gradient(135deg, #4FC3F7 0%, #0B3D91 100%)` |
+
+```css
+:root {
+  --c-primary: #1565C0;
+  --c-blue-700: #0B3D91;
+  --c-navy: #071633;
+  --c-title: #0D47A1;
+  --c-accent: #4FC3F7;
+  --c-text: #212938;
+  --c-muted: #8C94A1;
+  --c-border: #CCD4DE;
+  --c-disabled-bg: #E8EDF4;
+  --c-error: #C62828;
+  --c-white: #FFFFFF;
+
+  --g-panel: linear-gradient(135deg, #1565C0 0%, #0B3D91 55%, #071633 100%);
+  --g-logo: linear-gradient(135deg, #4FC3F7 0%, #0B3D91 100%);
+
+  --font-sans: "Inter", sans-serif;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+}
+```
+
+---
+
+## 2. Tipografía
+
+<Typeset
+  fontSizes={[10, 12, 13, 14, 15, 19, 30]}
+  fontWeight={600}
+  sampleText="Bienvenido a Cortex Empresas"
+  fontFamily='"Inter", sans-serif'
+/>
+
+| Token | Peso | Tamaño / line-height | Letter-spacing | Color | Uso |
+|---|---|---|---|---|---|
+| `logo` | 700 | 30px / normal | -0.02em | `#0D47A1` | "Cortex" |
+| `logo-sub` | 600 | 10px / normal | 0.24em | `#1565C0` | "EMPRESAS" |
+| `heading` | 600 | 19px / normal | 0 | `#0D47A1` | Bienvenido a… |
+| `label` | 600 | 15px / normal | 0 | `#212938` | Usuario |
+| `input` | 400 | 15px / normal | 0 | `#8C94A1` (placeholder) | Input |
+| `button` | 600 | 15px / normal | 0 | `#8C94A1` · opacity .8 | Continuar (deshabilitado) |
+| `helper-error` | 500 | 12px / normal | 0 | `#C62828` | Mensaje de error |
+| `link` | 500 | 14px / normal | 0 | `#1565C0` + underline | Recupéralo |
+| `card-title` | 600 | 14px / normal | 0 | `#4FC3F7` | Títulos tarjetas panel |
+| `body` | 400 | 14px / 21px | 0 | `#FFFFFF` | Texto tarjetas |
+| `card-reg-title` | 600 | 14px / normal | 0 | `#212938` | ¿No tienes usuario…? |
+| `caption` | 400 | 13px / normal | 0 | `#8C94A1` / `#212938` | Subtítulos, footers |
+| `top-link` | 600 | 15px / normal | 0 | `#0D47A1` | Translate to English |
+
+---
+
+## 3. Espaciado
+
+Escala usada: **4 · 8 · 12 · 14 · 16 · 20 · 24 · 32 · 36 · 42 · 48 px**
+
+| Relación | Distancia |
+|---|---|
+| Logo → título | 36px |
+| Título → label | 32px |
+| Label → input | 8px |
+| Input → mensaje de error | 8px |
+| Error → botón | 24px |
+| Botón → link | 42px |
+| Link → card registro | 20px |
+| Formulario (panel 610px) | left 90 · right 90 · top 175 |
+| Tarjetas (panel 830px) | left 130 · top 215 · gap 20 |
+| Barra superior | top 16 (flecha) / 22 (idioma) · laterales 36 |
+
+---
+
+## 4. Componentes
+
+### Layout general
+
+```css
+.login {
+  display: grid;
+  grid-template-columns: 830px 610px; /* 57.6% / 42.4% */
+  width: 1440px;
+  height: 900px; /* min-height: 100vh */
+  font-family: var(--font-sans);
+}
+.login__left {
+  position: relative;
+  overflow: hidden;
+  background: var(--g-panel);
+}
+.login__right {
+  position: relative;
+  background: var(--c-white);
+}
+/* Decoración: líneas 1px rgba(79,195,247,.18),
+   nodos 6×6px border-radius 50% rgba(79,195,247,.5) */
+```
+
+### Tarjetas informativas (panel izquierdo)
+
+```css
+.info-cards {
+  position: absolute;
+  left: 130px;
+  top: 215px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.info-card {
+  width: 652px; /* alto: 233px y 117px (hug) */
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: rgba(7, 22, 51, 0.55);
+  border: 1px solid rgba(79, 195, 247, 0.15);
+  border-radius: var(--radius-md);
+}
+.info-card__title { font: 600 14px var(--font-sans); color: var(--c-accent); }
+.info-card__link  { font-weight: 600; text-decoration: underline; color: var(--c-white); }
+```
+
+### Fila con icono (tarjeta)
+
+```css
+.info-row { display: flex; align-items: center; gap: 16px; }
+.info-row__icon {
+  width: 36px;
+  height: 36px;
+  flex: 0 0 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: grid;
+  place-items: center;
+}
+.info-row__icon svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--c-accent);
+  stroke-width: 1.5px;
+  fill: none;
+}
+.info-row__text {
+  width: 560px;
+  font: 400 14px/21px var(--font-sans);
+  color: var(--c-white);
+}
+```
+
+### Barra superior y footers
+
+```css
+.topbar__back {
+  position: absolute; top: 16px; left: 36px;
+  font-size: 24px; color: var(--c-title);
+}
+.topbar__lang {
+  position: absolute; top: 22px; right: 36px;
+  display: flex; align-items: center; gap: 8px;
+  font: 600 15px var(--font-sans); color: var(--c-title);
+}
+.topbar__lang-icon {
+  width: 18px; height: 18px;
+  border: 1.5px solid var(--c-title); border-radius: 50%;
+}
+.footer-left {
+  position: absolute; bottom: 34px; width: 100%;
+  text-align: center;
+  font: 400 13px var(--font-sans); color: rgba(255, 255, 255, 0.8);
+}
+.footer-right {
+  position: absolute; bottom: 24px; width: 100%;
+  text-align: center;
+  font: 400 13px var(--font-sans); color: var(--c-text);
+}
+.footer-right strong { font-weight: 600; color: var(--c-title); }
+```
+
+### Formulario y logo
+
+```css
+.form {
+  position: absolute; left: 90px; top: 175px;
+  width: 430px;
+  display: flex; flex-direction: column;
+}
+.logo { display: flex; align-items: center; gap: 12px; margin-bottom: 36px; }
+.logo__mark {
+  width: 44px; height: 44px;
+  border-radius: var(--radius-md);
+  background: var(--g-logo);
+}
+.logo__name { font: 700 30px var(--font-sans); letter-spacing: -0.02em; color: var(--c-title); }
+.logo__sub  { font: 600 10px var(--font-sans); letter-spacing: 0.24em; color: var(--c-primary); }
+.form__title { font: 600 19px var(--font-sans); color: var(--c-title); margin-bottom: 32px; }
+.form__label { font: 600 15px var(--font-sans); color: var(--c-text); margin-bottom: 8px; }
+```
+
+### Input de texto
+
+| Estado | Borde | Extra | Origen |
+|---|---|---|---|
+| Default | 1px `#CCD4DE` | — | propuesto |
+| Hover | 1px `#8C94A1` | — | propuesto |
+| Focus | 1.5px `#1565C0` | `box-shadow: 0 0 0 3px rgba(21,101,192,.15)` | propuesto |
+| Error | 1.5px `#C62828` | icono `!` + helper text | mockup |
+
+```css
+.input {
+  width: 430px;
+  height: 48px;
+  box-sizing: border-box;
+  padding: 0 14px 0 16px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  font: 400 15px var(--font-sans);
+  color: var(--c-text);
+  transition: border-color .15s, box-shadow .15s;
+}
+.input::placeholder { color: var(--c-muted); }
+.input:hover  { border-color: var(--c-muted); }
+.input:focus  {
+  border: 1.5px solid var(--c-primary);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(21, 101, 192, 0.15);
+}
+.input--error { border: 1.5px solid var(--c-error); }
+.input__error-icon {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 1.5px solid var(--c-error); color: var(--c-error);
+  font: 700 13px var(--font-sans);
+  display: grid; place-items: center;
+}
+.input__helper { margin-top: 8px; font: 500 12px var(--font-sans); color: var(--c-error); }
+```
+
+### Botón primario "Continuar"
+
+| Estado | Fondo | Texto | Origen |
+|---|---|---|---|
+| Enabled | `#1565C0` | `#FFFFFF` | propuesto |
+| Hover | `#0D47A1` | `#FFFFFF` | propuesto |
+| Active | `#0B3D91` | `#FFFFFF` | propuesto |
+| Focus-visible | — | outline 3px `rgba(79,195,247,.5)` offset 2px | propuesto |
+| Disabled | `#E8EDF4` | `rgba(140,148,161,.8)` | mockup |
+
+```css
+.btn-primary {
+  width: 430px;
+  height: 48px;
+  margin-top: 24px;
+  display: flex; align-items: center; justify-content: center;
+  border: none;
+  border-radius: var(--radius-sm);
+  font: 600 15px var(--font-sans);
+  background: var(--c-primary);
+  color: var(--c-white);
+  cursor: pointer;
+  transition: background .15s;
+}
+.btn-primary:hover  { background: var(--c-title); }
+.btn-primary:active { background: var(--c-blue-700); }
+.btn-primary:focus-visible { outline: 3px solid rgba(79, 195, 247, 0.5); outline-offset: 2px; }
+.btn-primary:disabled {
+  background: var(--c-disabled-bg);
+  color: rgba(140, 148, 161, 0.8);
+  cursor: not-allowed;
+}
+```
+
+### Link y card de registro
+
+```css
+.link-recover {
+  margin-top: 42px;
+  align-self: center;
+  font: 500 14px var(--font-sans);
+  color: var(--c-primary);
+  text-decoration: underline;
+}
+.card-register {
+  width: 430px;
+  height: 80px;
+  margin-top: 20px;
+  padding: 0 20px;
+  box-sizing: border-box;
+  display: flex; align-items: center; gap: 16px;
+  background: var(--c-white);
+  border: 1px solid var(--c-border);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.card-register:hover { /* propuesto */
+  border-color: var(--c-primary);
+  box-shadow: 0 2px 8px rgba(13, 71, 161, 0.08);
+}
+.card-register__icon    { width: 28px; height: 28px; stroke: var(--c-primary); stroke-width: 1.5px; }
+.card-register__texts   { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.card-register__title   { font: 600 14px var(--font-sans); color: var(--c-text); }
+.card-register__sub     { font: 400 13px var(--font-sans); color: var(--c-muted); }
+.card-register__chevron { width: 7px; height: 14px; stroke: var(--c-text); stroke-width: 1.8px; }
+```
+
+---
+
+## 5. Componentes sugeridos para Storybook
+
+| Componente | Props / variantes |
+|---|---|
+| `Logo` | `size` |
+| `TextField` | `label`, `placeholder`, `state: default \| hover \| focus \| error \| disabled`, `helperText` |
+| `Button` | `variant: primary`, `disabled`, `fullWidth` |
+| `Link` | `href`, `underline` |
+| `RegisterCard` | `title`, `subtitle`, `onClick` |
+| `InfoCard` | `title`, `children` |
+| `InfoRow` | `icon: lock \| shield \| monitor`, `text` |
+| `LoginPage` | composición de todo lo anterior |
