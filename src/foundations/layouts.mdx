@@ -1,0 +1,257 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Atoms/Layouts" />
+
+# Layouts
+
+The layout system is built on a responsive CSS grid. Use `.pbo-container` as the outer wrapper and `.pbo-row` to create grid rows. Column spans use Tailwind's `col-span-*` and `col-start-*` utilities with responsive prefixes.
+
+## Breakpoints
+
+Defined as `--pbo-breakpoint-*` and mapped to Tailwind variant prefixes.
+
+export const breakpoints = [
+  { prefix: 'xs', variable: '--pbo-breakpoint-xs', rem: '23.5rem', px: '376px' },
+  { prefix: 'sm', variable: '--pbo-breakpoint-sm', rem: '36rem', px: '576px' },
+  { prefix: 'md', variable: '--pbo-breakpoint-md', rem: '48rem', px: '768px' },
+  { prefix: 'lg', variable: '--pbo-breakpoint-lg', rem: '62rem', px: '992px' },
+  { prefix: 'xl', variable: '--pbo-breakpoint-xl', rem: '75rem', px: '1200px' },
+  { prefix: '2xl', variable: '--pbo-breakpoint-2xl', rem: '96rem', px: '1536px' }
+];
+
+<table>
+  <thead>
+    <tr>
+      <th>Prefix</th>
+      <th>Variable</th>
+      <th>rem</th>
+      <th>px</th>
+      <th>Grid columns</th>
+    </tr>
+  </thead>
+  <tbody>
+    {breakpoints.map(({ prefix, variable, rem, px }) => (
+      <tr key={prefix}>
+        <td>
+          <code>{prefix}:</code>
+        </td>
+        <td>
+          <code>{variable}</code>
+        </td>
+        <td>{rem}</td>
+        <td>{px}</td>
+        <td>
+          {prefix === 'md' ? '8' : prefix === 'xs' || prefix === 'sm' ? '4' : '12'}
+        </td>
+      </tr>
+    ))}
+  </tbody>
+</table>
+
+## Grid Columns
+
+Each `col-span-*` value shown tiling across a full `.pbo-row`. From desktop (≥ 992px, `lg:`) the grid has **12 columns**, so spans 1–12 apply. On tablet (768px–991px, `md:`) the grid has **8 columns**, and on mobile **4 columns** — spans that exceed the column count fill the remaining space.
+
+export const colSpanRows = [
+  {
+    label: 'col-span-1',
+    spans: [
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1',
+      'col-span-1'
+    ]
+  },
+  {
+    label: 'col-span-2',
+    spans: ['col-span-2', 'col-span-2', 'col-span-2', 'col-span-2', 'col-span-2', 'col-span-2']
+  },
+  {
+    label: 'col-span-3',
+    spans: ['col-span-3', 'col-span-3', 'col-span-3', 'col-span-3']
+  },
+  {
+    label: 'col-span-4',
+    spans: ['col-span-4', 'col-span-4', 'col-span-4']
+  },
+  {
+    label: 'col-span-6',
+    spans: ['col-span-6', 'col-span-6']
+  },
+  {
+    label: 'col-span-12',
+    spans: ['col-span-12']
+  }
+];
+
+<div class="flex flex-col gap-4">
+  {colSpanRows.map(({ label, spans }) => (
+    <div key={label}>
+      <p class="pbo-label-bold-sm mb-1">{label}</p>
+      <div class="pbo-container">
+        <div class="pbo-row text-white text-center">
+          {spans.map((span, i) => (
+            <div key={i} className={`${span} bg-primary rounded py-2 pbo-label-bold-sm`}>
+              {label}
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Column Distribution Examples
+
+Each example shows how a layout pattern adapts across breakpoints. Labels inside each column display `mobile / md / lg` span values. Resize the viewport to see the layout shift.
+
+### 1 column · Full width
+
+Mobile: 4/4 · Tablet (md): 8/8 · Desktop (lg): 12/12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-8 lg:col-span-12 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-8 / lg:col-span-12</div>
+    </div>
+  </div>
+</div>
+
+### 2 columns equal
+
+Mobile: stacked (4+4) · Tablet: 4+4 of 8 · Desktop: 6+6 of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-4 lg:col-span-6 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-4 / lg:col-span-6</div>
+    </div>
+    <div class="col-span-4 md:col-span-4 lg:col-span-6 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-4 / lg:col-span-6</div>
+    </div>
+  </div>
+</div>
+
+### 2 columns · Sidebar + Content (1/3 + 2/3)
+
+Mobile: stacked · Tablet: 3+5 of 8 · Desktop: 4+8 of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-3 lg:col-span-4 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-3 / lg:col-span-4</div>
+    </div>
+    <div class="col-span-4 md:col-span-5 lg:col-span-8 bg-secondary rounded p-3">
+      <div>col-span-4 / md:col-span-5 / lg:col-span-8</div>
+    </div>
+  </div>
+</div>
+
+### 3 columns equal
+
+Mobile: stacked · Tablet: stacked (8 columns aren't evenly divisible by 3) · Desktop: 4+4+4 of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-8 lg:col-span-4 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-8 / lg:col-span-4</div>
+    </div>
+    <div class="col-span-4 md:col-span-8 lg:col-span-4 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-8 / lg:col-span-4</div>
+    </div>
+    <div class="col-span-4 md:col-span-8 lg:col-span-4 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-8 / lg:col-span-4</div>
+    </div>
+  </div>
+</div>
+
+### 4 columns equal
+
+Mobile: stacked · Tablet: 2×(4+4) of 8 · Desktop: 3+3+3+3 of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-4 lg:col-span-3 bg-primary rounded p-3">4 / md:4 / lg:3</div>
+    <div class="col-span-4 md:col-span-4 lg:col-span-3 bg-primary rounded p-3">4 / md:4 / lg:3</div>
+    <div class="col-span-4 md:col-span-4 lg:col-span-3 bg-primary rounded p-3">4 / md:4 / lg:3</div>
+    <div class="col-span-4 md:col-span-4 lg:col-span-3 bg-primary rounded p-3">4 / md:4 / lg:3</div>
+  </div>
+</div>
+
+### Centered content with `col-start-*`
+
+Mobile: full · Tablet: 6 cols centered (start 2) of 8 · Desktop: 8 cols centered (start 3) of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-6 md:col-start-2 lg:col-span-8 lg:col-start-3 bg-primary rounded p-3">
+      <div>col-span-4 / md:col-span-6 md:col-start-2 / lg:col-span-8 lg:col-start-3</div>
+    </div>
+  </div>
+</div>
+
+### 2 columns with offset gap
+
+Mobile: stacked · Tablet: offset 1+3+gap+3+1 of 8 · Desktop: offset 3+3+gap+3+3 of 12
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-3 md:col-start-2 lg:col-span-3 lg:col-start-4 bg-warning rounded p-3">
+      <div>col-span-4 / md:col-span-3 md:col-start-2 / lg:col-span-3 lg:col-start-4</div>
+    </div>
+    <div class="col-span-4 md:col-span-3 md:col-start-6 lg:col-span-3 lg:col-start-10 bg-warning rounded p-3">
+      <div>col-span-4 / md:col-span-3 md:col-start-6 / lg:col-span-3 lg:col-start-10</div>
+    </div>
+  </div>
+</div>
+
+### Nested grids
+
+`.pbo-row` can be nested inside any column to create sub-grids.
+
+<div class="pbo-container">
+  <div class="pbo-row text-white text-center">
+    <div class="col-span-4 md:col-span-8 lg:col-span-12">
+      <div class="pbo-row">
+        <div class="col-span-4 md:col-span-3 lg:col-span-4">
+          <div class="pbo-row">
+            <div class="col-span-4 md:col-span-4 lg:col-span-6 bg-primary rounded p-3">
+              <div>Column 1.1</div>
+            </div>
+            <div class="col-span-4 md:col-span-4 lg:col-span-6 bg-primary rounded p-3">
+              <div>Column 1.2</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-span-4 md:col-span-3 md:col-start-6 lg:col-span-4 lg:col-start-9 bg-primary rounded p-3">
+          <div>Column 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-4 md:col-span-8 lg:col-span-12">
+      <div class="pbo-row">
+        <div class="col-span-4 md:col-span-3 md:col-start-2 lg:col-span-3 lg:col-start-4 bg-warning rounded p-3">
+          <div>Column 1</div>
+        </div>
+        <div class="col-span-4 md:col-span-3 md:col-start-6 lg:col-span-3 lg:col-start-10 bg-warning rounded p-3">
+          <div>Column 2</div>
+        </div>
+      </div>
+    </div>
+    <div class="col-span-4 md:col-span-8 lg:col-span-12">
+      <div class="pbo-row">
+        <div class="col-span-4 md:col-span-4 md:col-start-2 lg:col-span-6 lg:col-start-4 bg-error rounded p-3">
+          <div>Column 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

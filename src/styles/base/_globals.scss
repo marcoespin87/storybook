@@ -1,0 +1,22 @@
+.pbo-filter-red {
+  filter: var(--pbo-filter-svg-red);
+}
+
+.pbo-filter-light-gray-40 {
+  filter: var(--pbo-filter-svg-light-gray-40);
+}
+
+.pbo-filter-light-gray-80 {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(0%) saturate(100%) hue-rotate(171deg)
+    brightness(90%) contrast(83%);
+}
+
+.pbo-filter-error {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(74%) saturate(7098%) hue-rotate(5deg)
+    brightness(86%) contrast(115%);
+}
+
+.pbo-carousel-track > * {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+}

@@ -1,0 +1,103 @@
+// =============================================================================
+// Globales
+// =============================================================================
+$pbo-base-component-height: var(--pbo-base-component-height);
+// =============================================================================
+// Breakpoints
+// =============================================================================
+$pbo-breakpoint-xs: var(--pbo-breakpoint-xs);
+$pbo-breakpoint-sm: var(--pbo-breakpoint-sm);
+$pbo-breakpoint-md: var(--pbo-breakpoint-md);
+$pbo-breakpoint-lg: var(--pbo-breakpoint-lg);
+$pbo-breakpoint-xl: var(--pbo-breakpoint-xl);
+$pbo-breakpoint-2xl: var(--pbo-breakpoint-2xl);
+// =============================================================================
+// Primary colors
+// =============================================================================
+$pbo-color-primary-100: var(--pbo-color-primary-100);
+$pbo-color-primary-80: var(--pbo-color-primary-80);
+$pbo-color-primary: var(--pbo-color-primary);
+$pbo-color-primary-60: var(--pbo-color-primary-60);
+$pbo-color-primary-40: var(--pbo-color-primary-40);
+$pbo-color-primary-30: var(--pbo-color-primary-30);
+$pbo-color-primary-20: var(--pbo-color-primary-20);
+$pbo-color-primary-10: var(--pbo-color-primary-10);
+// =============================================================================
+// Secondary colors
+// =============================================================================
+$pbo-color-secondary-100: var(--pbo-color-secondary-100);
+$pbo-color-secondary-80: var(--pbo-color-secondary-80);
+$pbo-color-secondary: var(--pbo-color-secondary);
+$pbo-color-secondary-60: var(--pbo-color-secondary-60);
+$pbo-color-secondary-40: var(--pbo-color-secondary-40);
+$pbo-color-secondary-30: var(--pbo-color-secondary-30);
+$pbo-color-secondary-20: var(--pbo-color-secondary-20);
+$pbo-color-secondary-10: var(--pbo-color-secondary-10);
+// =============================================================================
+// Gray colors (Dark and Light)
+// =============================================================================
+$pbo-color-dark-gray-100: var(--pbo-color-dark-gray-100);
+$pbo-color-dark-gray-90: var(--pbo-color-dark-gray-90);
+$pbo-color-dark-gray-80: var(--pbo-color-dark-gray-80);
+$pbo-color-dark-gray-70: var(--pbo-color-dark-gray-70);
+$pbo-color-dark-gray-60: var(--pbo-color-dark-gray-60);
+$pbo-color-light-gray-50: var(--pbo-color-light-gray-50);
+$pbo-color-light-gray-40: var(--pbo-color-light-gray-40);
+$pbo-color-light-gray-30: var(--pbo-color-light-gray-30);
+$pbo-color-light-gray-20: var(--pbo-color-light-gray-20);
+$pbo-color-light-gray-10: var(--pbo-color-light-gray-10);
+// =============================================================================
+// Background and Surface colors
+// =============================================================================
+$pbo-color-background-surface: var(--pbo-color-white);
+$pbo-color-background-green: var(--pbo-color-background-green);
+$pbo-color-background-gray-30: var(--pbo-color-background-gray-30);
+$pbo-color-background-gray-20: var(--pbo-color-background-gray-20);
+$pbo-color-background-gray-10: var(--pbo-color-background-gray-10);
+// =============================================================================
+// Segment colors
+// =============================================================================
+$pbo-color-segment-large: var(--pbo-color-segment-large);
+$pbo-color-segment-small: var(--pbo-color-segment-small);
+$pbo-color-segment-private: var(--pbo-color-segment-private);
+$pbo-color-segment-personal: var(--pbo-color-segment-personal);
+// =============================================================================
+// Product colors
+// =============================================================================
+$pbo-color-product-investment: var(--pbo-color-product-investment);
+$pbo-color-product-card: var(--pbo-color-product-card);
+$pbo-color-product-deposit: var(--pbo-color-product-deposit);
+$pbo-color-product-credit: var(--pbo-color-product-credit);
+// =============================================================================
+// Success colors
+// =============================================================================
+$pbo-color-success: var(--pbo-color-success);
+$pbo-color-success-10: var(--pbo-color-success-10);
+// =============================================================================
+// Warning colors
+// =============================================================================
+$pbo-color-warning: var(--pbo-color-warning);
+$pbo-color-warning-10: var(--pbo-color-warning-10);
+// =============================================================================
+// Error colors
+// =============================================================================
+$pbo-color-error: var(--pbo-color-error);
+$pbo-color-error-10: var(--pbo-color-error-10);
+// =============================================================================
+// Informative colors
+// =============================================================================
+$pbo-color-informative: var(--pbo-color-informative);
+$pbo-color-informative-10: var(--pbo-color-informative-10);
+// =============================================================================
+// White and Black colors
+// =============================================================================
+$pbo-color-white: var(--pbo-color-white);
+$pbo-color-black: var(--pbo-color-black);
+// =============================================================================
+// Filters
+// =============================================================================
+$filtro-svg-white: var(--pbo-filter-svg-white);
+$filtro-svg-red: var(--pbo-filter-svg-red);
+$filtro-svg-black: var(--pbo-filter-svg-black);
+$filtro-svg-yellow: var(--pbo-filter-svg-yellow);
+$filtro-svg-light-gray-40: var(--pbo-filter-svg-light-gray-40);

@@ -1,0 +1,18 @@
+@layer base {
+  body {
+    color: var(--pbo-color-dark-gray-90);
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    font-style: normal;
+    font-family: var(--pbo-font-nunito);
+    font-weight: var(--pbo-font-weight-regular);
+    font-size: var(--pbo-font-size-base);
+    line-height: var(--pbo-font-size-base--line-height);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+}

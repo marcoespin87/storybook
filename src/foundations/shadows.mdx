@@ -1,0 +1,26 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Atoms/Shadows" />
+
+# Shadows
+
+Defined as `--pbo-shadow-*` and mapped to `shadow-*` utilities.
+
+export const shadows = [
+  { utility: 'shadow-xs', variable: ' --pbo-shadow-xs' },
+  { utility: 'shadow-sm', variable: ' --pbo-shadow-sm' },
+  { utility: 'shadow-md', variable: ' --pbo-shadow-md' },
+  { utility: 'shadow-lg', variable: ' --pbo-shadow-lg' },
+  { utility: 'shadow-xl', variable: ' --pbo-shadow-xl' },
+  { utility: 'shadow-2xl', variable: ' --pbo-shadow-2xl' }
+];
+
+<div class="flex flex-col gap-8">
+  {shadows.map(({ utility }) => (
+    <div key={utility} style={{ textAlign: 'center' }}>
+      <div className={`w-125 h-40 flex flex-col items-center justify-center ${utility}`}>
+        <span class="text-base font-extrabold">{utility}</span>
+      </div>
+    </div>
+  ))}
+</div>

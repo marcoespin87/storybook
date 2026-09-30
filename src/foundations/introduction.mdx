@@ -1,0 +1,191 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Introduction" />
+
+# Design System
+
+This design system is built on top of **Tailwind CSS v4**.
+All styles come from custom CSS variables (`--pbo-*`) mapped through `@theme`,
+which means Tailwind auto-generates the utility classes for you.
+
+## Link Figma
+
+<a
+  href="https://www.figma.com/design/gNnQ3BsMfOsed6Qvwrj1Uv/Librer%C3%ADa-Produbanco-Empresas?node-id=267-7409&t=YJAUxu2dfUzTWHZK-0"
+  target="_blank"
+  rel="noopener noreferrer"
+  style={{
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: '0.5rem',
+    color: '#0f4dbc',
+    fontWeight: 600,
+    fontSize: 14,
+    borderRadius: 8,
+    textDecoration: 'none',
+    transition: 'opacity 0.2s',
+    marginBottom: '1rem',
+    marginTop: '1rem'
+  }}
+>
+  <span>🎨 Librería Produbanco Empresas</span>
+</a>
+
+## How it works
+
+```css
+/* Your CSS variables */
+:root {
+  --pbo-color-primary: #00693c;
+}
+
+/* Mapped in @theme */
+@theme {
+  --color-primary: var(--pbo-color-primary);
+}
+
+/* Tailwind generates -> bg-primary . text-primary . border-primary */
+
+```
+
+## Quick reference
+
+export const tokens = [
+  { label: 'Primary', utilities: ['bg-primary', 'text-primary', 'border-primary'] },
+  { label: 'Secondary', utilities: ['bg-secondary', 'text-secondary', 'border-secondary'] },
+  { label: 'Success', utilities: ['bg-success', 'text-success'] },
+  { label: 'Warning', utilities: ['bg-warning', 'text-warning'] },
+  { label: 'Error', utilities: ['bg-error', 'text-error'] },
+  { label: 'Font Nunito', utilities: ['font-nunito'] },
+  { label: 'Shadow md', utilities: ['shadow-md', 'shadow-lg'] },
+  { label: 'Radius', utilities: ['rounded-md', 'rounded-lg', 'rounded-full'] }
+];
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+
+{tokens.map(({label, utilities}) => (
+
+    <div key={ label } style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.5rem', borderBottom: '1px solid #f0f0f0' }}>
+      <span style={{ minWidth: 90, fontSize: 13, color: '#888' }}>{ label }</span>
+      {utilities.map(u => (
+        <code key={ u } style={{ fontSize: 12, background: '#f4f4f4', padding: '2px 8px', borderRadius: 4 }}>{u}</code>
+      ))}
+    </div>
+
+))}
+
+</div>
+
+> See the **Foundation** section in the sidebar for the full token catalog.
+
+## Colors preview
+
+export const palette = [
+  { label: 'Primary', utility: 'bg-primary', variable: '--pbo-color-primary' },
+  { label: 'Secondary', utility: 'bg-secondary', variable: '--pbo-color-secondary' },
+  { label: 'Success', utility: 'bg-success', variable: '--pbo-color-success' },
+  { label: 'Error', utility: 'bg-error', variable: '--pbo-color-error' },
+  { label: 'Dark Gray 100', utility: 'bg-dark-gray-100', variable: '--pbo-color-dark-gray-100' }
+];
+
+<div
+  style={{
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(130px, 1fr))',
+    gap: '1rem'
+  }}
+>
+  {palette.map(({ label, utility, variable }) => (
+    <div
+      key={variable}
+      style={{ borderRadius: 8, overflow: 'hidden', border: '1px solid #e5e5e5' }}
+    >
+      <div title={variable} style={{ height: 56, background: `var(${variable})` }} />
+      <div style={{ padding: '8px 10px' }}>
+        <strong style={{ fontSize: 13, display: 'block' }}>{label}</strong>
+        <code style={{ fontSize: 11, color: '#666' }}>{utility}</code>
+      </div>
+    </div>
+  ))}
+</div>
+
+## Typography preview
+
+export const fonts = [
+  { label: 'Nunito', utility: 'font-nunito', variable: '--pbo-font-nunito', size: 16, weight: 700 }
+];
+
+<div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+  {fonts.map(({ label, utility, variable, size, weight }) => (
+    <div key={utility} style={{ padding: '1rem', border: '1px solid #e5e5e5', borderRadius: 8 }}>
+      <p
+        style={{
+          fontFamily: `var(${variable})`,
+          fontSize: size,
+          fontWeight: weight,
+          margin: '0 0 6px'
+        }}
+      >
+        The quick brown foz jumps over the lazy dog
+      </p>
+      <code style={{ fontSize: 11, color: '#888' }}>{utility}</code>
+    </div>
+  ))}
+</div>
+
+## Shadows preview
+
+export const shadows = [
+  { utility: 'shadow-xs', variable: '--pbo-shadow-xs' },
+  { utility: 'shadow-sm', variable: '--pbo-shadow-sm' },
+  { utility: 'shadow-lg', variable: '--pbo-shadow-lg' },
+  { utility: 'shadow-xl', variable: '--pbo-shadow-xl' },
+  { utility: 'shadow-2xl', variable: '--pbo-shadow-2xl' }
+];
+
+<div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', padding: '1rem 0' }}>
+  {shadows.map(({ utility, variable }) => (
+    <div key={utility} style={{ textAlign: 'center' }}>
+      <div
+        style={{
+          width: 72,
+          height: 72,
+          borderRadius: 8,
+          background: 'white',
+          boxShadow: `var(${variable})`,
+          margin: '0 auto 8px'
+        }}
+      >
+      </div>
+      <code style={{ fontSize: 12 }}>{utility}</code>
+    </div>
+  ))}
+</div>
+
+## Radius preview
+
+export const radius = [
+  { utility: 'rounded-xs', variable: '--pbo-radius-xs' },
+  { utility: 'rounded-sm', variable: '--pbo-radius-sm' },
+  { utility: 'rounded-lg', variable: '--pbo-radius-lg' },
+  { utility: 'rounded-xl', variable: '--pbo-radius-xl' }
+];
+
+<div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', padding: '1rem 0' }}>
+  {radius.map(({ utility, variable }) => (
+    <div key={utility} style={{ textAlign: 'center' }}>
+      <div
+        style={{
+          width: 90,
+          height: 90,
+          borderRadius: `var(${variable})`,
+          border: '1px solid #888',
+          background: 'white',
+          margin: '0 auto 8px'
+        }}
+      >
+      </div>
+      <code style={{ fontSize: 12 }}>{utility}</code>
+    </div>
+  ))}
+</div>

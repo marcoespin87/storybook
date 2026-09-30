@@ -1,0 +1,29 @@
+@layer components {
+  .pbo-container {
+    @apply w-full px-4;
+  }
+
+  @media (width < 576px) {
+    .pbo-container {
+      padding-inline: 1rem;
+    }
+  }
+
+  .pbo-row {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  @media (width >= 768px) {
+    .pbo-row {
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+  }
+
+  @media (width >= 992px) {
+    .pbo-row {
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+    }
+  }
+}
