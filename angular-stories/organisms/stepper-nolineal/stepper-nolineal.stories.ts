@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { StepperNolinealComponent } from './stepper-nolineal.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { CheckboxComponent } from '../../molecules/checkbox/checkbox.component';
 
 const meta: Meta<StepperNolinealComponent> = {

@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { fn } from 'storybook/test';
-import { ButtonComponent } from './button.component';
+import { ButtonComponent } from '../../app/components/button/button.component';
 
 // ver documento: buttonIconUrl es la ruta de icono de ejemplo, valor no indicado
 const buttonIconUrl = '';

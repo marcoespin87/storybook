@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { TableCompanyComponent } from './table-company.component';
 import { BadgeComponent } from '../../molecules/badge/badge.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { SplitButtonComponent } from '../split-button/split-button.component';
 
 // ver documento: el selector del componente no se indica; `pbo-table-company` en los templates es un marcador de fixture.

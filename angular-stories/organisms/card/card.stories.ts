@@ -3,10 +3,10 @@ import { moduleMetadata } from '@storybook/angular';
 import { CardComponent } from './card.component';
 // ver documento: el doc no lista los imports del decorator; se infieren de la composición mostrada (Badge, Button, Divider, InputText, Toggle).
 import { BadgeComponent } from '../../molecules/badge/badge.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { DividerComponent } from '../../molecules/divider/divider.component';
 import { ToggleComponent } from '../../molecules/toggle/toggle.component';
-import { InputTextComponent } from '../input-text/input-text.component';
+import { InputTextComponent } from '../../../src/app/components/input-text/input-text.component';
 
 // ver documento: CardTypesEnum / ComponentStatusEnum no se definen en el doc; se usan sus valores como strings.
 const meta: Meta<CardComponent> = {

@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { fn } from 'storybook/test';
 import { DialogComponent } from './dialog.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { CheckboxComponent } from '../../molecules/checkbox/checkbox.component';
 import { IconComponent } from '../../molecules/icon/icon.component';
 

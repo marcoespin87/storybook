@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { TooltipModule } from 'primeng/tooltip';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { BadgeComponent } from '../badge/badge.component';
 import { CheckboxComponent } from '../checkbox/checkbox.component';

@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { signal } from '@angular/core';
 import { FormsModule, ReactiveFormsModule, NgForm, FormBuilder, Validators } from '@angular/forms';
 import { RadioButtonComponent } from './radio-button.component';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { FormErrorMessageComponent } from '../form-error-message/form-error-message.component';
 
 // ver documento: no indica de dónde se importa componentImportDoc.

@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MessageModule } from 'primeng/message'; // ver documento: el origen de MessageModule no se indica
 import { ToggleButtonComponent } from './toggle-button.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 
 // ver documento: el selector del componente no se indica; `pbo-toggle-button` en los templates es un marcador de fixture.
 // Forma de cada opción: { label: string; value: any; isDisabled?: boolean }

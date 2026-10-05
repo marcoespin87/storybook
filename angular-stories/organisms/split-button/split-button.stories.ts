@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { SplitButtonComponent } from './split-button.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 
 // ver documento: el selector del componente no se indica; `pbo-split-button` en los templates es un marcador de fixture.
 // Los comandos y `pboClick` usan fn() (acciones de Storybook); aquí se omiten: ver documento: import de `fn` no detallado.

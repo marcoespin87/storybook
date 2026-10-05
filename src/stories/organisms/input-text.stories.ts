@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { InputTextComponent } from './input-text.component';
+import { InputTextComponent } from '../../app/components/input-text/input-text.component';
 
 const tooltipPositions = ['top', 'bottom', 'left', 'right'];
 const tooltipArrows = ['none', 'tip-left', 'tip-right'];

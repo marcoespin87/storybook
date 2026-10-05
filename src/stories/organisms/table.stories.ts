@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/angular';
-import { TableComponent } from './table.component';
+import { TableComponent } from '../../app/components/table/table.component';
 
 // ver documento: el selector del componente no se indica; `pbo-table` en los templates es un marcador de fixture.
 // Modelo de columna: field, header, subField?, icon?, rowStateType?

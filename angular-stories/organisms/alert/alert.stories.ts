@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { AlertComponent } from './alert.component';
 // ver documento: CustomContentAlert compone un ButtonComponent en modo link; el doc no lista el decorator de imports.
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 
 const meta: Meta<AlertComponent> = {
   title: 'Organisms/Alert',

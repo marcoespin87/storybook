@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { EmptyStateComponent } from './empty-state.component';
-import { ButtonComponent } from '../../molecules/button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 import { CarouselComponent } from '../carousel/carousel.component';
 
 // ver documento: ruta real del icono monocromático de búsqueda no se lista.

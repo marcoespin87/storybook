@@ -3,7 +3,7 @@ import { moduleMetadata } from '@storybook/angular';
 import { signal } from '@angular/core';
 import { FormsModule, NgForm, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { ToggleComponent } from './toggle.component';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 
 // ver documento: no indica de dónde se importa componentImportDoc.
 

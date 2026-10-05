@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/angular';
 import { moduleMetadata } from '@storybook/angular';
 import { CheckboxComponent } from './checkbox.component';
-import { ButtonComponent } from '../button/button.component';
+import { ButtonComponent } from '../../../src/app/components/button/button.component';
 // ver documento: FormErrorMessageComponent, FormSubmitDirective y FormControlErrorDirective
 // son dependencias externas a estos documentos; su ruta de origen no se indica.
 
